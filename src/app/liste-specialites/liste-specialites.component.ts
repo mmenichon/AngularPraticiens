@@ -12,10 +12,11 @@ import {HttpHeaders} from "@angular/common/http";
 export class ListeSpecialitesComponent implements OnInit {
 
   public mesSpecialites: Specialite[] = [];
+  public specialitesNonAffectees!: Specialite[];
   private error: string = "";
   public titre: string = "Liste des spécialités";
   public idPraticien!: number;
-  // public idSpecialite!: number;
+  public idSpecialite!: number;
 
   constructor(private unServiceSpecialite: SpecialiteService, private unRouteur: Router, private activatedRoute: ActivatedRoute) {
     let httpHeader = new HttpHeaders({
@@ -28,9 +29,7 @@ export class ListeSpecialitesComponent implements OnInit {
     //@ts-ignore
     this.idPraticien = +this.activatedRoute.snapshot.paramMap.get('id');
     this.getListeSpecialitesParPraticien(this.idPraticien);
-
-    // this.updateSpecialite();
-    // this.deleteSpecialite();
+    this.getSpecialitesNonAffectees(this.idPraticien);
   }
 
   getListeSpecialitesParPraticien(id: number): void {
@@ -41,13 +40,21 @@ export class ListeSpecialitesComponent implements OnInit {
     )
   }
 
-  // postAddSpecialite(idPraticien: number, idSpecialite: number): void {
-  //   this.unServiceSpecialite.postAddSpecialite(idSpecialite, this.idPraticien).subscribe(
-  //     () => {
-  //       this.unRouteur.navigate(['/specialitesPraticien/', this.idPraticien]);
-  //     }, (error) => { this.error = error.messages; }
-  //   )
-  // }
+  getSpecialitesNonAffectees(idPraticien: number): void {
+    this.unServiceSpecialite.getSpecialitesNonAffectees(idPraticien).subscribe(
+      (specialite) => {
+        this.specialitesNonAffectees = specialite;
+      }, (error) => { this.error = error.messages; }
+    )
+  }
+
+  addSpecialite(idSpecialite: number): void {
+    this.unServiceSpecialite.postAddSpecialite(idSpecialite, this.idPraticien).subscribe(
+      () => {
+        this.unRouteur.navigate(['/specialitesPraticien/', this.idPraticien]);
+      }, (error) => { this.error = error.messages; }
+    )
+  }
 
   deleteSpecialite(idSpecialite: number): void {
     this.unServiceSpecialite.postDeleteSpecialite(this.idPraticien, idSpecialite).subscribe(

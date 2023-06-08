@@ -12,7 +12,6 @@ export class SpecialiteService {
 
   private header = new Headers({'content-type': 'application/json'});
   private ClientUrl: string="";
-  private uneSpecialite : Specialite = new Specialite();
 
   constructor(private httpClient: HttpClient) {
     let httpHeaders = new HttpHeaders({
@@ -26,11 +25,17 @@ export class SpecialiteService {
     return this.httpClient.get(this.ClientUrl);
   }
 
+  getSpecialitesNonAffectees(idPraticien: number): Observable<any> {
+    this.ClientUrl = environment.ENDPOINT + 'api/specialitesNonAffectees/' + idPraticien;
+    return this.httpClient.get(this.ClientUrl);
+  }
 
-  // postAddSpecialite(idPraticien: number, idSpecialite: number): Observable<any> {
-  //   this.ClientUrl = environment.ENDPOINT + 'api/addSpecialite';
-  //   return this.httpClient.post(this.ClientUrl, JSON.stringify(idPraticien, idSpecialite));
-  // }
+  postAddSpecialite(idPraticien: number, idSpecialite: number): Observable<any> {
+    this.ClientUrl = environment.ENDPOINT + 'api/addSpecialite';
+    console.log(idPraticien);
+    console.log(idSpecialite);
+    return this.httpClient.post(this.ClientUrl, JSON.stringify({idPraticien, idSpecialite}));
+  }
 
   postDeleteSpecialite(idPraticien: number, idSpecialite: number): Observable<any> {
     this.ClientUrl = environment.ENDPOINT + 'api/deleteSpecialite';
