@@ -1,0 +1,40 @@
+<app-nav-bar></app-nav-bar>
+<br> <br> <br>
+<div>
+  <h1> {{ titre }} </h1>
+  <br> <br>
+</div>
+
+<div class="container">
+
+  <div class="col-md-5">
+    <table class="table table-bordered table-striped table-responsive">
+
+      <thead>
+      <tr>
+        <th style="width: 60%">Libelle</th>
+        <th style="width: 20%">Supprimer</th>
+        <th style="width: 20%">Modifier</th>
+
+      </tr>
+      </thead>
+
+      <tr *ngFor="let uneSpecialite of mesSpecialites">
+
+        <td>{{uneSpecialite.lib_specialite}}</td>
+
+<!--        <td>-->
+<!--          <a (click)="updateSpecialite(uneSpecialite.id_specialite)">Modifier</span></a>-->
+<!--        </td>-->
+
+        <td>
+          <button (click)="deleteSpecialite(uneSpecialite.id_specialite)">Supprimer</button>
+        </td>
+
+
+      </tr>
+
+    </table>
+  </div>
+
+</div>
