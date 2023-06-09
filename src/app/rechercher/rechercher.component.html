@@ -1,1 +1,51 @@
-<p>rechercher works!</p>
+<app-nav-bar></app-nav-bar>
+<br> <br> <br>
+<div>
+  <h1> {{ titre }} </h1>
+  <br> <br>
+</div>
+
+<div class="container">
+  <div class="col-md-5">
+
+    <h2>Les Praticiens</h2>
+    <table class="table table-bordered table-striped table-responsive">
+      <thead>
+      <tr>
+        <th style="width: 45%">Nom</th>
+        <th style="width: 45%">Prénom</th>
+        <th style="width: 10%">Spécialités</th>
+      </tr>
+      </thead>
+
+      <tr *ngFor="let unPraticien of mesPraticiens">
+        <td>{{unPraticien.nom_praticien}}</td>
+        <td>{{unPraticien.prenom_praticien}}</td>
+        <td><button class="btn btn-primary" (click)="specialites(unPraticien.id_praticien)">
+          <span class="glyphicon glyphicon-list"></span> Spécialités</button>
+        </td>
+      </tr>
+    </table>
+
+    <h2>Les Spécialités</h2>
+    <table class="table table-bordered table-striped table-responsive">
+      <thead>
+      <tr>
+        <th style="width: 60%">Libelle</th>
+      </tr>
+      </thead>
+
+      <tr *ngFor="let uneSpecialite of mesSpecialites">
+        <td>{{uneSpecialite.lib_specialite}}</td>
+      </tr>
+    </table>
+
+  </div>
+</div>
+
+
+
+
+
+
+

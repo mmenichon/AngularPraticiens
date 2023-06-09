@@ -10,6 +10,8 @@ import {NgForm} from "@angular/forms";
 })
 export class NavBarComponent implements OnInit{
 
+  recherche!: string;
+
   constructor(private unRouteur:Router) {
     let httpHeaders= new HttpHeaders({
       'Content-Type': 'application/json',
@@ -19,6 +21,9 @@ export class NavBarComponent implements OnInit{
 
   ngOnInit(): void { }
 
-  // rechercher(form: NgForm): void{ }
+  rechercher(form: NgForm): void{
+      this.recherche = form.value.recherche;
+      this.unRouteur.navigate(['/postSearch/', this.recherche])
+    }
 
 }
