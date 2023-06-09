@@ -30,8 +30,9 @@ export class SpecialiteService {
     return this.httpClient.get(this.ClientUrl);
   }
 
-  postAddSpecialite(idPraticien: number, idSpecialite: number): Observable<any> {
+  postAddSpecialite(idSpecialite: number, idPraticien: number): Observable<any> {
     this.ClientUrl = environment.ENDPOINT + 'api/addSpecialite';
+    console.log(this.ClientUrl);
     console.log(idPraticien);
     console.log(idSpecialite);
     return this.httpClient.post(this.ClientUrl, JSON.stringify({idPraticien, idSpecialite}));

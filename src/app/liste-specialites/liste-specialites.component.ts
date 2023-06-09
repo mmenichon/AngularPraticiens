@@ -51,7 +51,7 @@ export class ListeSpecialitesComponent implements OnInit {
   addSpecialite(idSpecialite: number): void {
     this.unServiceSpecialite.postAddSpecialite(idSpecialite, this.idPraticien).subscribe(
       () => {
-        this.unRouteur.navigate(['/specialitesPraticien/', this.idPraticien]);
+        window.location.reload()
       }, (error) => { this.error = error.messages; }
     )
   }

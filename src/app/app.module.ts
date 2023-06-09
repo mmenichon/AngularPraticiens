@@ -9,6 +9,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { ListePraticiensComponent } from './liste-praticiens/liste-praticiens.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ListeSpecialitesComponent } from './liste-specialites/liste-specialites.component';
+import { RechercherComponent } from './rechercher/rechercher.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListeSpecialitesComponent } from './liste-specialites/liste-specialites
 
     ConnexionComponent,
     ListePraticiensComponent,
-    ListeSpecialitesComponent
+    ListeSpecialitesComponent,
+    RechercherComponent
   ],
   imports: [
     BrowserModule,
