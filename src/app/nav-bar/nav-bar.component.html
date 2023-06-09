@@ -1,16 +1,19 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <a class="navbar-brand" href="/home">GSB Praticien</a>
   <div class="container">
-
-    <ul class="nav navbar-nav" routerLinkActive="active">
-      <li class="nav-item"><a class="nav-link" routerLink="/listePraticiens">Liste des praticiens</a></li>
-
-      <form #nomForm="ngForm" (ngSubmit)="rechercher(nomForm)">
-        <input name="recherche" type="text" [(ngModel)]="recherche">
-        <button type="submit" class="btn btn-default">Rechercher</button>
-      </form>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/connexion" routerLinkActive="active">Connexion</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/listePraticiens" routerLinkActive="active">Liste des praticiens</a>
+      </li>
     </ul>
-
   </div>
+  <form class="form-inline my-2 my-lg-0" (ngSubmit)="rechercher(searchForm)" #searchForm="ngForm">
+    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" name="recherche" [(ngModel)]="recherche">
+    <button class="btn btn-default" type="submit">Rechercher</button>
+  </form>
 </nav>
 
 <div>

@@ -3,7 +3,6 @@ import { Router } from '@angular/router'
 import {Visiteur} from "../metier/Visiteur";
 import {VisiteurService} from "../service/visiteur.service";
 
-
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
@@ -14,7 +13,8 @@ export class ConnexionComponent implements OnInit {
   public titre : string = 'Connexion';
   public userLogin! : string;
   public userMdp! : string;
-  public lblLogin : string = 'Entrez votre mot de passe : ';
+  public lblLogin : string = 'Login';
+  public lblMdp : string = 'Mot de passe';
   public lblMessage! : string;
   public estCache : boolean = true;
   public unVisiteur : Visiteur = new Visiteur();
@@ -22,28 +22,26 @@ export class ConnexionComponent implements OnInit {
 
   constructor(private unVS: VisiteurService, private routeur : Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   valider(): void {
     this.unVisiteur = new Visiteur();
     this.unVisiteur.login_visiteur = this.userLogin;
     this.unVisiteur.pwd_visiteur = this.userMdp;
-    this.unVisiteur.id_visiteur = 0;
 
     this.unVS.getLogin(this.unVisiteur).subscribe(
       (visiteur) => {
         this.unVisiteur = visiteur;
-        if (this.unVisiteur.id_visiteur != 0) {
+        if (this.unVisiteur.id_visiteur != null) {
           alert("Authentification réussie !");
           localStorage.setItem('id', (this.unVisiteur.id_visiteur).toString());
-          this.routeur.navigate(['/home']);
+          this.routeur.navigate(['home']);
         } else {
-          alert("Erreur d'appel !");
+          alert("Erreur de login ou mot de passe");
         }
       },
       (error) => {
-        this.error = error.messages;
+        alert("Erreur d'appel !")
       });
   }
 }

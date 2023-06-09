@@ -20,6 +20,9 @@ export class VisiteurService {
   }
   getLogin (unV: Visiteur): Observable<any> {
     this.ClientUrl = environment.ENDPOINT + 'api/login';
+    console.log(this.ClientUrl);
+    console.log(unV);
+    console.log(JSON.stringify(unV));
     return this.httpClient.post(this.ClientUrl, JSON.stringify(unV));
   }
 }
