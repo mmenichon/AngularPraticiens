@@ -10,6 +10,7 @@ import { ListePraticiensComponent } from './liste-praticiens/liste-praticiens.co
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ListeSpecialitesComponent } from './liste-specialites/liste-specialites.component';
 import { RechercherComponent } from './rechercher/rechercher.component';
+import { ModifierComponent } from './modifier/modifier.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RechercherComponent } from './rechercher/rechercher.component';
     ConnexionComponent,
     ListePraticiensComponent,
     ListeSpecialitesComponent,
-    RechercherComponent
+    RechercherComponent,
+    ModifierComponent
   ],
   imports: [
     BrowserModule,
