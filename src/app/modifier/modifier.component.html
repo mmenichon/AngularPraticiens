@@ -1,1 +1,33 @@
-<p>modifier works!</p>
+<app-nav-bar></app-nav-bar>
+<br> <br> <br>
+<div>
+  <h1> {{ titre }} </h1>
+  <br> <br>
+</div>
+
+<form name="updateSpecialite">
+  <h2>Modifier une spécialité</h2>
+  <div class="col-md-12  col-sm-12 well well-md">
+    <div class="form-horizontal">
+
+      <div class="form-group">
+        <label class="col-md-3 col-sm-3 control-label">Spécialité : </label>
+        <div class="col-md-2 col-sm-2">
+          <select class="form-control" name="idSpecialite" [(ngModel)]="idSpecialite" required>
+            <ng-container  *ngFor = "let laSpecialite of specialitesNonAffectees">
+              <option value="{{laSpecialite.id_specialite}}">{{laSpecialite.lib_specialite}} </option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+
+      <br><br>
+      <div class="form-group">
+        <div class="col-md-2 col-md-offset-3 col-sm-6 col-sm-offset-3">
+          <button type="button" (click)="updateSpecialite(idSpecialite)" class="btn btn-default btn-primary">Valider</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>

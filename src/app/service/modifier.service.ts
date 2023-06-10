@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
+import {Specialite} from "../metier/Specialite";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SpecialiteService {
+export class ModifierService {
 
   private header = new Headers({'content-type': 'application/json'});
-  private ClientUrl: string="";
+  private ClientUrl: string = "";
 
   constructor(private httpClient: HttpClient) {
     let httpHeaders = new HttpHeaders({
@@ -18,27 +19,26 @@ export class SpecialiteService {
     });
   }
 
-  getListeSpecialitesParPraticien(id: number): Observable<any> {
-    this.ClientUrl = environment.ENDPOINT + 'api/specialitesPraticien/' + id;
-    return this.httpClient.get(this.ClientUrl);
-  }
-
   getSpecialitesNonAffectees(idPraticien: number): Observable<any> {
     this.ClientUrl = environment.ENDPOINT + 'api/specialitesNonAffectees/' + idPraticien;
     return this.httpClient.get(this.ClientUrl);
   }
 
-  postAddSpecialite(idSpecialite: number, idPraticien: number): Observable<any> {
-    this.ClientUrl = environment.ENDPOINT + 'api/addSpecialite';
+  // postUpdateSpecialite(uneSpecialite: Specialite): Observable<any> {
+  //   this.ClientUrl = environment.ENDPOINT + 'api/updateSpecialite';
+  //   console.log(this.ClientUrl);
+  //   console.log(uneSpecialite);
+  //   return this.httpClient.post(this.ClientUrl, uneSpecialite)
+  // }
+
+  postUpdateSpecialite(idPraticien: number, ancienneSpe: number, idSpecialite: number): Observable<any> {
+    this.ClientUrl = environment.ENDPOINT + 'api/updateSpecialite';
     console.log(this.ClientUrl);
     console.log(idPraticien);
+    console.log(ancienneSpe);
     console.log(idSpecialite);
-    return this.httpClient.post(this.ClientUrl, JSON.stringify({idPraticien, idSpecialite}));
-  }
 
-  postDeleteSpecialite(idPraticien: number, idSpecialite: number): Observable<any> {
-    this.ClientUrl = environment.ENDPOINT + 'api/deleteSpecialite';
-    return this.httpClient.post(this.ClientUrl, JSON.stringify({idPraticien, idSpecialite}));
+    return this.httpClient.post(this.ClientUrl, JSON.stringify({ idPraticien, ancienneSpe, idSpecialite }));
   }
 
 }

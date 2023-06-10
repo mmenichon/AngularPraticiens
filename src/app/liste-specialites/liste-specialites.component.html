@@ -20,9 +20,9 @@
 
       <tr *ngFor="let uneSpecialite of mesSpecialites">
         <td>{{uneSpecialite.lib_specialite}}</td>
-<!--        <td>-->
-<!--          <button (click)="updateSpecialite(uneSpecialite.id_specialite)">Modifier</span></button>-->
-<!--        </td>-->
+        <td>
+          <button (click)="updateSpecialite(idPraticien, uneSpecialite.id_specialite)">Modifier</button>
+        </td>
         <td>
           <button (click)="deleteSpecialite(uneSpecialite.id_specialite)">Supprimer</button>
         </td>

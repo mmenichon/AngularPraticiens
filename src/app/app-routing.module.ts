@@ -5,6 +5,7 @@ import { ConnexionComponent } from "./connexion/connexion.component";
 import { ListePraticiensComponent } from "./liste-praticiens/liste-praticiens.component";
 import { ListeSpecialitesComponent } from './liste-specialites/liste-specialites.component';
 import {RechercherComponent} from "./rechercher/rechercher.component";
+import {ModifierService} from "./service/modifier.service";
 
 const routes: Routes = [
   { path: '', redirectTo: '/connexion', pathMatch:'full' },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'listePraticiens', component: ListePraticiensComponent},
   { path: 'specialitesPraticien/:id', component: ListeSpecialitesComponent},
   { path: 'addSpecialite', component: ListeSpecialitesComponent},
-  { path: 'postSearch/:recherche', component: RechercherComponent}
+  { path: 'postSearch/:recherche', component: RechercherComponent},
+  { path: 'updateSpecialite/:idP/:idS', component: ModifierService}
 ];
 
 @NgModule({

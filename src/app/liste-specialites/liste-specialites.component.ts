@@ -65,7 +65,7 @@ export class ListeSpecialitesComponent implements OnInit {
     )
   }
 
-  // updateSpecialite(idPraticien: number, idSpecialite: number): void {
-  //   this.unRouteur.navigate(['/updateSpecialite'])
-  // }
+  updateSpecialite(idPraticien: number, idSpecialite: number): void {
+    this.unRouteur.navigate(['/updateSpecialite', idPraticien, idSpecialite])
+  }
 }
