@@ -37,7 +37,7 @@ export class ModifierComponent implements OnInit {
     )
   }
 
-  // updataSpecialite(idSpecialite: number): void {
+  // updateSpecialite(idSpecialite: number): void {
   //   this.unServiceModifier.postUpdateSpecialite().subscribe(
   //     () => {
   //       window.location.reload()
