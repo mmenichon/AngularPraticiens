@@ -8,7 +8,7 @@ import {RechercherComponent} from "./rechercher/rechercher.component";
 import {ModifierService} from "./service/modifier.service";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/connexion', pathMatch:'full' },
+  { path: '', redirectTo: '/home', pathMatch:'full' },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'home', component: NavBarComponent },
   { path: 'listePraticiens', component: ListePraticiensComponent},
